@@ -87,10 +87,7 @@ class _SPracticeCalendarState extends State<SPracticeCalendar> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: onFloatingActionButtonPressed,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
       body: Column(
         children: [
@@ -98,25 +95,18 @@ class _SPracticeCalendarState extends State<SPracticeCalendar> {
             focusedDay: _focusedDay,
             onDaySelected: _onDaySelected,
             selectedDayPredicate: _selectedDayPredicate,
-            onPageChanged: (focusedDay) {
-              _focusedDay = focusedDay;
-            },
+            onPageChanged: (focusedDay) => _focusedDay = focusedDay,
           ),
           StreamBuilder<int>(
               stream: GetIt.I<AppDatabase>().watchScheduleCount(_selectedDay),
               builder: (context, snapshot) {
-                return FTodayBanner(
-                  selectedDay: _selectedDay,
-                  taskCount: snapshot.data ?? 0,
-                );
+                return FTodayBanner(selectedDay: _selectedDay, taskCount: snapshot.data ?? 0);
               }),
           Expanded(
             child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: StreamBuilder<List<MScheduleWithCategory>>(
-                  stream: GetIt.I<AppDatabase>()
-                      .watchScheduleItems(normalizeDate(_selectedDay)),
+                  stream: GetIt.I<AppDatabase>().watchScheduleItems(normalizeDate(_selectedDay)),
                   builder: (context, snapshot) {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
@@ -126,8 +116,7 @@ class _SPracticeCalendarState extends State<SPracticeCalendar> {
                       case ConnectionState.active:
                       case ConnectionState.done:
                         if (snapshot.hasError) {
-                          return Center(
-                              child: Text('Error: ${snapshot.error}'));
+                          return Center(child: Text('Error: ${snapshot.error}'));
                         }
                         if (!snapshot.hasData || snapshot.data!.isEmpty) {
                           return const Center(child: Text('일정이 없습니다.'));
@@ -136,53 +125,41 @@ class _SPracticeCalendarState extends State<SPracticeCalendar> {
                         return ListView.separated(
                           itemCount: selectedSchedules.length,
                           itemBuilder: (_, index) {
-                            final scheduleWithCategory =
-                                selectedSchedules[index];
+                            final scheduleWithCategory = selectedSchedules[index];
                             final schedule = scheduleWithCategory.scheduleItem;
-                            final categoryColor =
-                                scheduleWithCategory.categoryColor;
+                            final categoryColor = scheduleWithCategory.categoryColor;
 
                             return Dismissible(
                               key: ValueKey<int>(schedule.id),
                               direction: DismissDirection.endToStart,
                               background: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.blue[100],
-                                ),
+                                decoration:
+                                    BoxDecoration(shape: BoxShape.rectangle, borderRadius: BorderRadius.circular(20), color: Colors.blue[100]),
                               ),
                               onDismissed: (DismissDirection direction) {
-                                final removedSchedule =
-                                    scheduleWithCategory.scheduleItem;
-                                GetIt.I<AppDatabase>()
-                                    .deleteSchedule(removedSchedule.id);
+                                final removedSchedule = scheduleWithCategory.scheduleItem;
+                                GetIt.I<AppDatabase>().deleteSchedule(removedSchedule.id);
                                 if (context.mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: const Text('일정이 삭제되었습니다.'),
-                                      action: SnackBarAction(
-                                        textColor: Colors.blue[100],
-                                        label: '실행취소',
-                                        onPressed: () {
-                                          GetIt.I<AppDatabase>().addSchedule(
-                                            ScheduleItemsCompanion(
-                                              id: Value(removedSchedule.id),
-                                              startTime: Value(
-                                                  removedSchedule.startTime),
-                                              endTime: Value(
-                                                  removedSchedule.endTime),
-                                              content: Value(
-                                                  removedSchedule.content),
-                                              categoryColorId:
-                                                  Value(categoryColor.id),
-                                              date: Value(removedSchedule.date),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                      duration: const Duration(seconds: 3),
-                                    ),
+                                        content: const Text('일정이 삭제되었습니다.'),
+                                        action: SnackBarAction(
+                                          textColor: Colors.blue[100],
+                                          label: '실행취소',
+                                          onPressed: () {
+                                            GetIt.I<AppDatabase>().addSchedule(
+                                              ScheduleItemsCompanion(
+                                                id: Value(removedSchedule.id),
+                                                startTime: Value(removedSchedule.startTime),
+                                                endTime: Value(removedSchedule.endTime),
+                                                content: Value(removedSchedule.content),
+                                                categoryColorId: Value(categoryColor.id),
+                                                date: Value(removedSchedule.date),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        duration: const Duration(seconds: 3)),
                                   );
                                 }
                               },
@@ -190,12 +167,8 @@ class _SPracticeCalendarState extends State<SPracticeCalendar> {
                                 startTime: schedule.startTime,
                                 endTime: schedule.endTime,
                                 content: schedule.content,
-                                color: Color(int.parse(
-                                    'ff${categoryColor.color}',
-                                    radix: 16)),
-                                onWScheduleCardTap: () {
-                                  _onWScheduleCardTap(schedule);
-                                },
+                                color: Color(int.parse('ff${categoryColor.color}', radix: 16)),
+                                onWScheduleCardTap: () => _onWScheduleCardTap(schedule),
                               ),
                             );
                           },

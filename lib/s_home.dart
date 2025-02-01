@@ -1,7 +1,3 @@
-import 'package:calendar_scheduler/calendar_type/s_events_calendar.dart';
-
-import 'package:calendar_scheduler/calendar_type/s_range_calendar.dart';
-import 'package:calendar_scheduler/calendar_type/s_basic_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
