@@ -4,6 +4,7 @@ import 'package:calendar_scheduler/s_home.dart';
 import 'package:drift/drift.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -30,11 +31,13 @@ void main() async {
   }
 
   runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'TableCalendar Example',
-      theme: ThemeData(fontFamily: 'NotoSans'),
-      home: const SHome(),
+    ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'TableCalendar Example',
+        theme: ThemeData(fontFamily: 'NotoSans'),
+        home: const SHome(),
+      ),
     ),
   );
 }
