@@ -1,6 +1,6 @@
+import 'package:calendar_scheduler/common/router.dart';
 import 'package:calendar_scheduler/practice%20calendar/database/drift.dart';
 
-import 'package:calendar_scheduler/s_home.dart';
 import 'package:drift/drift.dart';
 
 import 'package:flutter/material.dart';
@@ -32,11 +32,11 @@ void main() async {
 
   runApp(
     ProviderScope(
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'TableCalendar Example',
         theme: ThemeData(fontFamily: 'NotoSans'),
-        home: const SHome(),
+        routerConfig: router,
       ),
     ),
   );
