@@ -1,0 +1,40 @@
+import 'package:calendar_scheduler/practice%20calendar/database/drift.dart';
+
+import 'package:calendar_scheduler/s_home.dart';
+import 'package:drift/drift.dart';
+
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+import 'practice calendar/dialog_schedule_bottom_sheet/constant/constant.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await initializeDateFormatting();
+
+  final database = AppDatabase();
+
+  // GetIt getIt = GetIt.instance;
+  // getIt.registerSingleton<AppDatabase>(database);
+
+  GetIt.I.registerSingleton<AppDatabase>(database);
+
+  final colors = await database.getCategoryColors;
+
+  if (colors.isEmpty) {
+    for (final color in categoryColors) {
+      await database.createCategoryColors(CategoryColorsCompanion(color: Value(color)));
+    }
+  }
+
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'TableCalendar Example',
+      theme: ThemeData(fontFamily: 'NotoSans'),
+      home: const SHome(),
+    ),
+  );
+}
