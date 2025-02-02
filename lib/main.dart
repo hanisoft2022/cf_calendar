@@ -17,9 +17,6 @@ void main() async {
 
   final database = AppDatabase();
 
-  // GetIt getIt = GetIt.instance;
-  // getIt.registerSingleton<AppDatabase>(database);
-
   GetIt.I.registerSingleton<AppDatabase>(database);
 
   final colors = await database.getCategoryColors;

@@ -21,12 +21,10 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   // main.dart에서 category colors 없을 시 삽입할 category 색상들
-  Future<int> createCategoryColors(CategoryColorsCompanion entry) =>
-      into(categoryColors).insert(entry);
+  Future<int> createCategoryColors(CategoryColorsCompanion entry) => into(categoryColors).insert(entry);
 
   // main.dart에서 초기화할 category 색상들
-  Future<List<CategoryColor>> get getCategoryColors =>
-      select(categoryColors).get();
+  Future<List<CategoryColor>> get getCategoryColors => select(categoryColors).get();
 
   // ID로 스케쥴 가져오기
   Future<MScheduleWithCategory> getScheduleWithCategoryById(int id) async {
@@ -66,10 +64,7 @@ class AppDatabase extends _$AppDatabase {
     )
       ..where(scheduleItems.date.equals(date))
       ..orderBy(
-        [
-          OrderingTerm(expression: scheduleItems.startTime),
-          OrderingTerm(expression: scheduleItems.endTime)
-        ],
+        [OrderingTerm(expression: scheduleItems.startTime), OrderingTerm(expression: scheduleItems.endTime)],
       );
 
     // 선택지 1. 먼저 watch()를 호출하여 스트림을 생성한 후, 스트림 내의 각 이벤트를 map과 toList로 변환
@@ -111,23 +106,18 @@ class AppDatabase extends _$AppDatabase {
   }
 
   // 일정 추가
-  Future<int> addSchedule(ScheduleItemsCompanion entry) =>
-      into(scheduleItems).insert(entry);
+  Future<int> addSchedule(ScheduleItemsCompanion entry) => into(scheduleItems).insert(entry);
 
   // 일정 삭제
-  Future<int> deleteSchedule(int id) =>
-      (delete(scheduleItems)..where((t) => t.id.equals(id))).go();
+  Future<int> deleteSchedule(int id) => (delete(scheduleItems)..where((t) => t.id.equals(id))).go();
 
   // 일정 업데이트
-  Future<int> updateScheduleById(int id, ScheduleItemsCompanion entry) =>
-      (update(scheduleItems)..where((tbl) => tbl.id.equals(id))).write(entry);
+  Future<int> updateScheduleById(int id, ScheduleItemsCompanion entry) => (update(scheduleItems)..where((tbl) => tbl.id.equals(id))).write(entry);
 
   // 스케쥴 수 watch
   // AppDatabase 클래스 내의 watchScheduleCount 함수 최적화
   Stream<int> watchScheduleCount(DateTime date) {
-    return (select(scheduleItems)..where((tbl) => tbl.date.equals(date)))
-        .watch()
-        .map((event) => event.length);
+    return (select(scheduleItems)..where((tbl) => tbl.date.equals(date))).watch().map((event) => event.length);
   }
 
   @override

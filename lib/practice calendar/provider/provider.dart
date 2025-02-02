@@ -1,4 +1,7 @@
+import 'package:calendar_scheduler/practice%20calendar/database/drift.dart';
+import 'package:calendar_scheduler/practice%20calendar/model/m_schedule_with_category.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarState {
@@ -21,6 +24,7 @@ class CalendarState {
   }
 }
 
+// ---------------------------- //
 final calendarProvider = StateNotifierProvider<CalendarNotifier, CalendarState>((ref) {
   return CalendarNotifier();
 });
@@ -40,4 +44,17 @@ class CalendarNotifier extends StateNotifier<CalendarState> {
       );
     }
   }
+
+  void onPageChanged(DateTime focusedDay) {
+    state = state.copyWith(focusedDay: focusedDay);
+  }
 }
+
+// ---------------------------- //
+final scheduleCountProvider = StreamProvider.family<int, DateTime>((ref, selectedDay) {
+  return GetIt.I<AppDatabase>().watchScheduleCount(selectedDay);
+});
+// ---------------------------- //
+final scheduleItemsProvider = StreamProvider.family<List<MScheduleWithCategory>, DateTime>((ref, selectedDay) {
+  return GetIt.I<AppDatabase>().watchScheduleItems(normalizeDate(selectedDay));
+});
