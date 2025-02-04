@@ -1,7 +1,7 @@
 import 'package:calendar_scheduler/practice%20calendar/0_common/database/database.dart';
 import 'package:calendar_scheduler/practice%20calendar/0_common/database/table/schedule_items.dart';
 import 'package:calendar_scheduler/practice%20calendar/0_common/model/m_schedule_with_category.dart';
-import 'package:calendar_scheduler/practice%20calendar/dialog_schedule_bottom_sheet/dialog/d_schedule_bottom_sheet.dart';
+import 'package:calendar_scheduler/practice%20calendar/d_schedule%20bottom%20sheet/dialog/d_schedule_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';

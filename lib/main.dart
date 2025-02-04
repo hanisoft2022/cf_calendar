@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import 'practice calendar/dialog_schedule_bottom_sheet/constant/constant.dart';
+import 'practice calendar/d_schedule bottom sheet/constant/constant.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,8 +22,8 @@ void main() async {
   final colors = await database.getCategoryColors;
 
   if (colors.isEmpty) {
-    for (final color in categoryColors) {
-      await database.createCategoryColors(CategoryColorsCompanion(color: Value(color)));
+    for (final categoryColor in categoryColors) {
+      await database.createCategoryColors(CategoryColorsCompanion(color: Value(categoryColor)));
     }
   }
 

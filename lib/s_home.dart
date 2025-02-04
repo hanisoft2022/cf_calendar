@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/practice%20calendar/calendar/screen/s_practice_calendar.dart';
+import 'package:calendar_scheduler/practice%20calendar/s_calendar/screen/s_practice_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
