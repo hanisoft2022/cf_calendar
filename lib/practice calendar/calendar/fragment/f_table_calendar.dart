@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/other%20calendars/common/constant/calendar_constant.dart';
+import 'package:calendar_scheduler/common/constant/calendar_constant.dart';
 
 import 'package:calendar_scheduler/practice%20calendar/0_common/constant/style.dart';
 import 'package:calendar_scheduler/practice%20calendar/0_common/provider/provider.dart';

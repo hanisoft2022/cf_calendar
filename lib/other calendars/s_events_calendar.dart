@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/other%20calendars/common/constant/calendar_constant.dart';
+import 'package:calendar_scheduler/common/constant/calendar_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 

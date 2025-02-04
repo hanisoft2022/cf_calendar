@@ -13,6 +13,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/s_practice_calendar',
+      name: SPracticeCalendar.routeName,
       builder: (context, state) => SPracticeCalendar(),
     ),
     GoRoute(

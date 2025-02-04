@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SPracticeCalendar extends ConsumerWidget {
+  static const String routeName = 's_practice_calendar';
+
   const SPracticeCalendar({super.key});
 
   @override
