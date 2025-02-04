@@ -1,5 +1,5 @@
 import 'package:calendar_scheduler/other%20calendars/common/router.dart';
-import 'package:calendar_scheduler/practice%20calendar/common/database/database.dart';
+import 'package:calendar_scheduler/practice%20calendar/0_common/database/database.dart';
 
 import 'package:drift/drift.dart';
 
