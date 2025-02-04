@@ -45,8 +45,7 @@ class _DScheduleBottomSheetState extends State<DScheduleBottomSheet> {
 
   initCategory() async {
     if (widget.id != null) {
-      final resp =
-          await GetIt.I<AppDatabase>().getScheduleWithCategoryById(widget.id!);
+      final resp = await GetIt.I<AppDatabase>().getScheduleWithCategoryById(widget.id!);
 
       setState(() {
         selectedColorId = resp.categoryColor.id;
@@ -179,14 +178,11 @@ class _DScheduleBottomSheetState extends State<DScheduleBottomSheet> {
     }
 
     return FutureBuilder(
-        future: widget.id == null
-            ? null
-            : GetIt.I<AppDatabase>().getScheduleWithCategoryById(widget.id!),
+        future: widget.id == null ? null : GetIt.I<AppDatabase>().getScheduleWithCategoryById(widget.id!),
         builder: (context, snapshot) {
           final data = snapshot.data?.scheduleItem;
 
-          if (snapshot.connectionState == ConnectionState.waiting &&
-              !snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.waiting && !snapshot.hasData) {
             return const Center(
               child: CircularProgressIndicator(),
             );

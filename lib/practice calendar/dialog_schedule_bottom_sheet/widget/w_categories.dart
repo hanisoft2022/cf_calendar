@@ -51,9 +51,7 @@ class WCategories extends StatelessWidget {
                               ),
                             ),
                             shape: BoxShape.circle,
-                            border: e.id == selectedColorHexCode
-                                ? Border.all(color: Colors.black, width: 3)
-                                : null,
+                            border: e.id == selectedColorHexCode ? Border.all(color: Colors.black, width: 3) : null,
                           ),
                         ),
                       ),

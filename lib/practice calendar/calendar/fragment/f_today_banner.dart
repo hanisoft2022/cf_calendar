@@ -18,10 +18,7 @@ class FTodayBanner extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('${selectedDay.year}. ${selectedDay.month}. ${selectedDay.day}'),
-          Text('일정 $taskCount 개')
-        ],
+        children: [Text('${selectedDay.year}. ${selectedDay.month}. ${selectedDay.day}'), Text('일정 $taskCount 개')],
       ),
     );
   }

@@ -20,10 +20,18 @@ part 'drift.g.dart';
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
-  // main.dart에서 category colors 없을 시 삽입할 category 색상들
+  // #region ==================== CRUD: Create ====================
+
+  // 새로운 카테고리 색상 생성 (main.dart 초기화용)
   Future<int> createCategoryColors(CategoryColorsCompanion entry) => into(categoryColors).insert(entry);
 
-  // main.dart에서 초기화할 category 색상들
+  /// 새 일정 추가
+  Future<int> addSchedule(ScheduleItemsCompanion entry) => into(scheduleItems).insert(entry);
+  // #endregion
+
+  // #region ==================== CRUD: Read ====================
+
+  // 모든 카테고리 색상 조회 (main.dart 초기화용)
   Future<List<CategoryColor>> get getCategoryColors => select(categoryColors).get();
 
   // ID로 스케쥴 가져오기
@@ -50,7 +58,7 @@ class AppDatabase extends _$AppDatabase {
     ).getSingle();
   }
 
-  // 일정 실시간 관찰
+  // 특정 날짜 일정 실시간 모니터링 (스트림)
   Stream<List<MScheduleWithCategory>> watchScheduleItems(DateTime date) {
     final query = select(scheduleItems).join(
       [
@@ -90,29 +98,21 @@ class AppDatabase extends _$AppDatabase {
         );
       },
     ).watch();
-
-    // return (select(scheduleItems)
-    //       ..where(
-    //         (tbl) => tbl.date.equals(date),
-    //       )
-    //       ..orderBy(
-    //         [
-    //           (tbl) => OrderingTerm(expression: tbl.startTime),
-    //           (tbl) =>
-    //               OrderingTerm(expression: tbl.endTime, mode: OrderingMode.asc),
-    //         ],
-    //       ))
-    //     .watch();
+/*
+    return (select(scheduleItems)
+          ..where(
+            (tbl) => tbl.date.equals(date),
+          )
+          ..orderBy(
+            [
+              (tbl) => OrderingTerm(expression: tbl.startTime),
+              (tbl) =>
+                  OrderingTerm(expression: tbl.endTime, mode: OrderingMode.asc),
+            ],
+          ))
+        .watch();
+        */
   }
-
-  // 일정 추가
-  Future<int> addSchedule(ScheduleItemsCompanion entry) => into(scheduleItems).insert(entry);
-
-  // 일정 삭제
-  Future<int> deleteSchedule(int id) => (delete(scheduleItems)..where((t) => t.id.equals(id))).go();
-
-  // 일정 업데이트
-  Future<int> updateScheduleById(int id, ScheduleItemsCompanion entry) => (update(scheduleItems)..where((tbl) => tbl.id.equals(id))).write(entry);
 
   // 스케쥴 수 watch
   // AppDatabase 클래스 내의 watchScheduleCount 함수 최적화
@@ -120,10 +120,32 @@ class AppDatabase extends _$AppDatabase {
     return (select(scheduleItems)..where((tbl) => tbl.date.equals(date))).watch().map((event) => event.length);
   }
 
+  // #endregion
+
+  // #region ==================== CRUD: Update ====================
+  /// ID로 일정 업데이트
+  Future<int> updateScheduleById(int id, ScheduleItemsCompanion entry) {
+    return (update(scheduleItems)
+          ..where((tbl) {
+            return tbl.id.equals(id);
+          }))
+        .write(entry);
+  }
+  // #endregion
+
+  // #region ==================== CRUD: Delete ====================
+
+  // ID로 일정 삭제
+  Future<int> deleteScheduleById(int id) => (delete(scheduleItems)..where((t) => t.id.equals(id))).go();
+  // #endregion
+
+  // #region ==================== Database Configuration ====================
   @override
   int get schemaVersion => 1;
+  // #endregion
 }
 
+// #region ==================== Database Connection ====================
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
@@ -139,3 +161,4 @@ LazyDatabase _openConnection() {
     return NativeDatabase.createInBackground(file);
   });
 }
+  // #endregion

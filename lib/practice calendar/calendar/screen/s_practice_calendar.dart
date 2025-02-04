@@ -138,7 +138,7 @@ class _SPracticeCalendarState extends State<SPracticeCalendar> {
                               ),
                               onDismissed: (DismissDirection direction) {
                                 final removedSchedule = scheduleWithCategory.scheduleItem;
-                                GetIt.I<AppDatabase>().deleteSchedule(removedSchedule.id);
+                                GetIt.I<AppDatabase>().deleteScheduleById(removedSchedule.id);
                                 if (context.mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(

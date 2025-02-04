@@ -4,5 +4,27 @@
         "EFEB",
         "FCAF",
         "FFEB"
-    ]
+    ],
+    "better-comments.tags": [
+  {
+    "tag": "#region",
+    "color": "#FF8C00",
+    "strikethrough": false,
+    "underline": false,
+    "backgroundColor": "transparent",
+    "bold": true,
+    "italic": false
+  },
+  {
+    "tag": "#endregion",
+    "color": "#FF8C00",
+    "strikethrough": false,
+    "underline": false,
+    "backgroundColor": "transparent",
+    "bold": true,
+    "italic": false
+  }
+]
+
 }
+

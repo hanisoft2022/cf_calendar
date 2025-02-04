@@ -8,11 +8,7 @@ class WContent extends StatelessWidget {
   final FormFieldSetter<String> onContentSaved;
   final String? initialValue;
 
-  const WContent(
-      {super.key,
-      required this.onContentValidate,
-      required this.onContentSaved,
-      this.initialValue});
+  const WContent({super.key, required this.onContentValidate, required this.onContentSaved, this.initialValue});
 
   @override
   Widget build(BuildContext context) {
