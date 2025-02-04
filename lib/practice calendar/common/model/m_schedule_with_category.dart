@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/practice%20calendar/database/drift.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/database/database.dart';
 
 class MScheduleWithCategory {
   final ScheduleItem scheduleItem;

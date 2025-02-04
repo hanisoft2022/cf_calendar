@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/common/constant/color.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/constant/color.dart';
 import 'package:calendar_scheduler/practice%20calendar/database/drift.dart';
 
 import 'package:calendar_scheduler/practice%20calendar/calendar/fragment/f_table_calendar.dart';

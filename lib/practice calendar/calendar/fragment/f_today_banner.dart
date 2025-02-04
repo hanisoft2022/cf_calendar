@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/common/constant/color.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/constant/color.dart';
 import 'package:flutter/material.dart';
 
 class FTodayBanner extends StatelessWidget {

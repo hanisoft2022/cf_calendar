@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:calendar_scheduler/practice%20calendar/database/table/category_colors.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/database/table/category_colors.dart';
 
 import 'package:drift/native.dart';
 import 'package:path/path.dart' as p;
@@ -10,11 +10,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqlite3_flutter_libs/sqlite3_flutter_libs.dart';
 import 'package:sqlite3/sqlite3.dart';
 
-import 'package:calendar_scheduler/practice%20calendar/database/table/schedule_items.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/database/table/schedule_items.dart';
 
-import '../model/m_schedule_with_category.dart';
+import '../../model/m_schedule_with_category.dart';
 
-part 'drift.g.dart';
+part 'database.g.dart';
 
 @DriftDatabase(tables: [ScheduleItems, CategoryColors])
 class AppDatabase extends _$AppDatabase {
