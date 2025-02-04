@@ -55,11 +55,7 @@ class CalendarNotifier extends StateNotifier<CalendarState> {
     showModalBottomSheet<ScheduleItems?>(
       context: context,
       builder: (context) => SafeArea(
-        child: DScheduleBottomSheet(
-          selectedDay: normalizeDate(
-            state.selectedDay,
-          ),
-        ),
+        child: DScheduleBottomSheet(selectedDay: normalizeDate(state.selectedDay)),
       ),
     );
   }
