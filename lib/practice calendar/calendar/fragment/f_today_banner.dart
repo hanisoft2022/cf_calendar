@@ -1,20 +1,19 @@
 import 'package:calendar_scheduler/practice%20calendar/0_common/constant/color.dart';
+import 'package:calendar_scheduler/practice%20calendar/0_common/provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FTodayBanner extends StatelessWidget {
-  final DateTime selectedDay;
-  final int taskCount;
-
-  const FTodayBanner({
-    super.key,
-    required this.selectedDay,
-    required this.taskCount,
-  });
+class FTodayBanner extends ConsumerWidget {
+  const FTodayBanner({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final calendarState = ref.watch(calendarProvider);
+    final selectedDay = calendarState.selectedDay;
+    final taskCount = ref.watch(scheduleItemCountProvider).value ?? 0;
+
     return Container(
-      color: primaryColor.withOpacity(0.3),
+      color: primaryColor.withAlpha(50),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
