@@ -1,6 +1,6 @@
-import 'package:calendar_scheduler/common/constant/calendar_constant.dart';
+import 'package:calendar_scheduler/other%20calendars/common/constant/calendar_constant.dart';
 
-import 'package:calendar_scheduler/practice%20calendar/const/style.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/constant/style.dart';
 import 'package:flutter/material.dart';
 
 import 'package:table_calendar/table_calendar.dart';

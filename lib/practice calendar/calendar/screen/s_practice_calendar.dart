@@ -1,10 +1,10 @@
 import 'package:calendar_scheduler/practice%20calendar/common/constant/color.dart';
-import 'package:calendar_scheduler/practice%20calendar/database/drift.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/database/database.dart';
 
 import 'package:calendar_scheduler/practice%20calendar/calendar/fragment/f_table_calendar.dart';
 import 'package:calendar_scheduler/practice%20calendar/calendar/fragment/f_today_banner.dart';
-import 'package:calendar_scheduler/practice%20calendar/model/m_schedule_with_category.dart';
-import 'package:calendar_scheduler/practice%20calendar/database/table/schedule_items.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/model/m_schedule_with_category.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/database/table/schedule_items.dart';
 
 import 'package:calendar_scheduler/practice%20calendar/dialog_schedule_bottom_sheet/dialog/d_schedule_bottom_sheet.dart';
 import 'package:calendar_scheduler/practice%20calendar/calendar/widget/w_schedule_card.dart';

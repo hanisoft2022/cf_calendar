@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/practice%20calendar/database/table/category_colors.dart';
+import 'package:calendar_scheduler/practice%20calendar/common/database/table/category_colors.dart';
 import 'package:drift/drift.dart';
 
 class ScheduleItems extends Table {

@@ -12,7 +12,7 @@ import 'package:sqlite3/sqlite3.dart';
 
 import 'package:calendar_scheduler/practice%20calendar/common/database/table/schedule_items.dart';
 
-import '../../model/m_schedule_with_category.dart';
+import '../model/m_schedule_with_category.dart';
 
 part 'database.g.dart';
 

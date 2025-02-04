@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/common/constant/calendar_constant.dart';
+import 'package:calendar_scheduler/other%20calendars/common/constant/calendar_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -12,8 +12,7 @@ class SEventsCalendar extends StatefulWidget {
 class SEventsCalendarState extends State<SEventsCalendar> {
   late final ValueNotifier<List<Event>> _selectedEvents;
   CalendarFormat _calendarFormat = CalendarFormat.month;
-  RangeSelectionMode _rangeSelectionMode = RangeSelectionMode
-      .toggledOff; // Can be toggled on/off by long pressing a date
+  RangeSelectionMode _rangeSelectionMode = RangeSelectionMode.toggledOff; // Can be toggled on/off by long pressing a date
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   DateTime? _rangeStart;
