@@ -8,18 +8,13 @@ import 'package:calendar_scheduler/practice%20calendar/d_schedule%20bottom%20she
 import 'package:calendar_scheduler/practice%20calendar/d_schedule%20bottom%20sheet/widget/w_save_button.dart';
 
 class DScheduleBottomSheet extends ConsumerWidget {
-  final int? id;
   final DateTime selectedDay;
+  final int? id;
 
-  const DScheduleBottomSheet({
-    super.key,
-    required this.selectedDay,
-    this.id,
-  });
+  const DScheduleBottomSheet({super.key, required this.selectedDay, this.id});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // id가 null이면 새 일정 추가, 아니면 수정
     final formState = ref.watch(scheduleFormProvider(id));
     final formNotifier = ref.read(scheduleFormProvider(id).notifier);
 

@@ -40,18 +40,16 @@ class WDismissibleScheduleItem extends ConsumerWidget {
               action: SnackBarAction(
                 textColor: Colors.blue[100],
                 label: '실행취소',
-                onPressed: () {
-                  db.addSchedule(
-                    ScheduleItemsCompanion(
-                      id: Value(removedSchedule.id),
-                      startTime: Value(removedSchedule.startTime),
-                      endTime: Value(removedSchedule.endTime),
-                      content: Value(removedSchedule.content),
-                      categoryColorId: Value(categoryColor.id),
-                      date: Value(removedSchedule.date),
-                    ),
-                  );
-                },
+                onPressed: () => db.addSchedule(
+                  ScheduleItemsCompanion(
+                    id: Value(removedSchedule.id),
+                    startTime: Value(removedSchedule.startTime),
+                    endTime: Value(removedSchedule.endTime),
+                    content: Value(removedSchedule.content),
+                    categoryColorId: Value(categoryColor.id),
+                    date: Value(removedSchedule.date),
+                  ),
+                ),
               ),
               duration: const Duration(seconds: 3),
             ),

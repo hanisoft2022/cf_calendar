@@ -17,7 +17,7 @@ class WSaveButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryColor.withOpacity(0.5),
+          backgroundColor: primaryColor.withAlpha(126),
           foregroundColor: Colors.white,
         ),
         onPressed: onSaveButtonPressed,

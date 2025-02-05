@@ -1,4 +1,5 @@
 import 'package:calendar_scheduler/practice%20calendar/0_common/database/database.dart';
+import 'package:calendar_scheduler/practice%20calendar/0_common/provider/app_database_provider.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,6 +48,7 @@ class ScheduleFormNotifier extends StateNotifier<ScheduleFormState> {
   ScheduleFormNotifier({this.scheduleId}) : super(ScheduleFormState(selectedColorId: 0, isLoading: true)) {
     _initCategory();
   }
+
   Future<void> _initCategory() async {
     if (scheduleId != null) {
       final resp = await _database.getScheduleWithCategoryById(scheduleId!);
@@ -108,12 +110,6 @@ class ScheduleFormNotifier extends StateNotifier<ScheduleFormState> {
     return null;
   }
 
-  void onStartSaved(String? val) {
-    if (val != null) {
-      updateStartTime(val);
-    }
-  }
-
   String? validateEndTime(String? val) {
     if (val == null || val.isEmpty) {
       return '끝나는 시각을 입력하세요';
@@ -126,6 +122,12 @@ class ScheduleFormNotifier extends StateNotifier<ScheduleFormState> {
       return '1~24 사이의 숫자를 입력하세요.';
     }
     return null;
+  }
+
+  void onStartSaved(String? val) {
+    if (val != null) {
+      updateStartTime(val);
+    }
   }
 
   void onEndSaved(String? val) {
@@ -173,3 +175,8 @@ class ScheduleFormNotifier extends StateNotifier<ScheduleFormState> {
 final scheduleFormProvider = StateNotifierProvider.family<ScheduleFormNotifier, ScheduleFormState, int?>(
   (ref, scheduleId) => ScheduleFormNotifier(scheduleId: scheduleId),
 );
+
+final categoryColorsProvider = FutureProvider<List<CategoryColor>>((ref) async {
+  final database = ref.watch(appDatabaseProvider);
+  return await database.getCategoryColors;
+});
