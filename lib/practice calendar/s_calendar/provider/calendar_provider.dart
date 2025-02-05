@@ -5,7 +5,7 @@ import 'package:calendar_scheduler/practice%20calendar/0_common/model/m_schedule
 import 'package:calendar_scheduler/practice%20calendar/d_schedule%20bottom%20sheet/dialog/d_schedule_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get_it/get_it.dart';
+
 import 'package:table_calendar/table_calendar.dart';
 
 /// 캘린더 상태 모델 (선택된 날짜와 집중 날짜)
