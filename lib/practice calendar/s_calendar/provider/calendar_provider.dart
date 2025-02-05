@@ -79,6 +79,12 @@ class CalendarNotifier extends StateNotifier<CalendarState> {
 // Provider 정의
 final calendarProvider = StateNotifierProvider<CalendarNotifier, CalendarState>((ref) => CalendarNotifier());
 
+// 선택된 날짜의 일정 목록을 스트림으로 제공하는 Provider
+final scheduleItemCountProvider = StreamProvider.autoDispose<int>((ref) {
+  final calendarState = ref.watch(calendarProvider);
+  return ref.watch(appDatabaseProvider).watchScheduleCount(calendarState.selectedDay);
+});
+
 // 선택된 날짜에 따른 일정 목록 스트림 제공자 : DB에서 일정 데이터를 읽어오도록 래핑
 final selectedDateSchedulesProvider = StreamProvider.autoDispose<List<MScheduleWithCategory>>((ref) {
   // calendarProvider의 선택된 날짜를 구독
@@ -87,10 +93,4 @@ final selectedDateSchedulesProvider = StreamProvider.autoDispose<List<MScheduleW
   final normalizedDate = normalizeDate(calendarState.selectedDay);
   // GetIt을 통해 AppDatabase 인스턴스에 접근하여 스트림 반환 (MScheduleWithCategory 목록)
   return ref.watch(appDatabaseProvider).watchScheduleItems(normalizedDate);
-});
-
-// 선택된 날짜의 일정 목록을 스트림으로 제공하는 Provider
-final scheduleItemCountProvider = StreamProvider.autoDispose<int>((ref) {
-  final calendarState = ref.watch(calendarProvider);
-  return ref.watch(appDatabaseProvider).watchScheduleCount(calendarState.selectedDay);
 });
