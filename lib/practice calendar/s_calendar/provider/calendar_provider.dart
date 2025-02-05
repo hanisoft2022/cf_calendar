@@ -79,7 +79,7 @@ class CalendarNotifier extends StateNotifier<CalendarState> {
 // Provider 정의
 final calendarProvider = StateNotifierProvider<CalendarNotifier, CalendarState>((ref) => CalendarNotifier());
 
-// 선택된 날짜의 일정 목록을 스트림으로 제공하는 Provider
+// 선택된 날짜의 일정의 수를 스트림으로 제공하는 Provider
 final scheduleItemCountProvider = StreamProvider.autoDispose<int>((ref) {
   final calendarState = ref.watch(calendarProvider);
   return ref.watch(appDatabaseProvider).watchScheduleCount(calendarState.selectedDay);
