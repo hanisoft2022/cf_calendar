@@ -1,5 +1,6 @@
 import 'package:calendar_scheduler/practice%20calendar/0_common/database/database.dart';
 import 'package:calendar_scheduler/practice%20calendar/0_common/database/table/schedule_items.dart';
+import 'package:calendar_scheduler/practice%20calendar/0_common/provider/app_database_provider.dart';
 import 'package:calendar_scheduler/practice%20calendar/0_common/model/m_schedule_with_category.dart';
 import 'package:calendar_scheduler/practice%20calendar/d_schedule%20bottom%20sheet/dialog/d_schedule_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -92,10 +93,4 @@ final selectedDateSchedulesProvider = StreamProvider.autoDispose<List<MScheduleW
 final scheduleItemCountProvider = StreamProvider.autoDispose<int>((ref) {
   final calendarState = ref.watch(calendarProvider);
   return ref.watch(appDatabaseProvider).watchScheduleCount(calendarState.selectedDay);
-});
-
-// 기존에 GetIt 등록된 AppDatabase 인스턴스를 제공하는 provider
-final appDatabaseProvider = Provider<AppDatabase>((ref) {
-  // 여기서 GetIt을 내부적으로 사용하지만, UI 및 다른 로직에서는 provider를 사용하게 됩니다.
-  return GetIt.I<AppDatabase>();
 });

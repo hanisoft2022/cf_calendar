@@ -1,5 +1,6 @@
 // schedule_dismissible_item.dart
 import 'package:calendar_scheduler/practice%20calendar/0_common/database/database.dart';
+import 'package:calendar_scheduler/practice%20calendar/0_common/provider/app_database_provider.dart';
 
 import 'package:calendar_scheduler/practice%20calendar/0_common/model/m_schedule_with_category.dart';
 import 'package:calendar_scheduler/practice%20calendar/s_calendar/widget/w_schedule_card.dart';

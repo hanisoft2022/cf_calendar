@@ -22,12 +22,9 @@ class SPracticeCalendar extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('연습')),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: primaryColor,
-        onPressed: () {
-          calendarStateNotifier.onFloatingActionButtonPressed(context);
-        },
-        child: const Icon(Icons.add, color: Colors.white),
-      ),
+          backgroundColor: primaryColor,
+          onPressed: () => calendarStateNotifier.onFloatingActionButtonPressed(context),
+          child: const Icon(Icons.add, color: Colors.white)),
       body: Column(
         children: [
           FTableCalendar(),
